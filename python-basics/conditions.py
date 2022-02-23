@@ -1,7 +1,7 @@
 number = 16
 second_number = None
 first_array = [1, "one", "two"]
-second_array = [1,2]
+second_array = [1, 2]
 
 if number > 15:
     print("1")
