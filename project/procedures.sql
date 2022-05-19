@@ -88,6 +88,7 @@ begin
         where order_id=(select u.user_id
                         from users u where first_name = uname );
         end loop;
+    commit;
 end;
 $$;
 
