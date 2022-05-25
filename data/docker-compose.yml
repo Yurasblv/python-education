@@ -1,0 +1,32 @@
+version: "3"
+services:
+
+    database:
+        restart: always
+        image: postgres:10.4
+        ports:
+            - "5432:5432"
+        env_file:
+            - .env.file
+
+    s3:
+        image: minio/minio
+        ports:
+            - "9000:9000"
+            - "9001:9001"
+        volumes:
+            - ./data_csv:/data
+        environment:
+            MINIO_ROOT_USER: root_user
+            MINIO_ROOT_PASSWORD: root_password
+        command: minio server /data --console-address ":9001"
+
+    data_service:
+        build:
+            dockerfile: Dockerfile
+            context: .
+        env_file:
+            -  .env.file
+        depends_on:
+            - s3
+            - database

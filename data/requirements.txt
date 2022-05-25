@@ -1,0 +1,5 @@
+pylint==2.11.1
+pandas==1.4.2
+sqlalchemy==1.4.36
+boto3==1.23.6
+psycopg2-binary==2.9.3
